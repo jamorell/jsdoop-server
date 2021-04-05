@@ -1,0 +1,23 @@
+http://localhost:8080/h5_to_dl4j
+
+
+curl -v --user username:password -H "Content-Type: application/octet-stream" -data '{"Id":5,"Email":"test@com","DataFields":null,"Status":0}' http://localhost:8080/h5_to_dl4j
+
+curl --header "Content-Type:application/octet-stream" --trace-ascii debugdump.txt --data-binary @asdf.file http://server:1234/url
+
+
+
+
+curl -v --user username:password -H "Content-Type: application/octet-stream"  --trace-ascii debugdump.txt --data-binary mobilenetv2_96_96_tl.h5  http://localhost:8080/h5_to_dl4j
+
+
+
+
+			<plugin>
+			  <groupId>org.codehaus.mojo</groupId>
+			  <artifactId>tomcat-maven-plugin</artifactId>            
+			  <configuration>          
+			    <server>tomcat-development-server</server>
+			    <port>9966</port>
+			  </configuration>
+			</plugin>

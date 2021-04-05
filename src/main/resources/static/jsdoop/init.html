@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="apple-touch-icon" sizes="57x57" href="./img/apple-icon-57x57.png">
+      <link rel="apple-touch-icon" sizes="60x60" href="./img/apple-icon-60x60.png">
+      <link rel="apple-touch-icon" sizes="72x72" href="./img/apple-icon-72x72.png">
+      <link rel="apple-touch-icon" sizes="76x76" href="./img/apple-icon-76x76.png">
+      <link rel="apple-touch-icon" sizes="114x114" href="./img/apple-icon-114x114.png">
+      <link rel="apple-touch-icon" sizes="120x120" href="./img/apple-icon-120x120.png">
+      <link rel="apple-touch-icon" sizes="144x144" href="./img/apple-icon-144x144.png">
+      <link rel="apple-touch-icon" sizes="152x152" href="./img/apple-icon-152x152.png">
+      <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-icon-180x180.png">
+      <link rel="icon" type="image/png" sizes="192x192"  href="./img/android-icon-192x192.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="96x96" href="./img/favicon-96x96.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16x16.png">
+      <link rel="manifest" href="./img/manifest.json">
+      <meta name="msapplication-TileColor" content="#ffffff">
+      <meta name="msapplication-TileImage" content="./img/ms-icon-144x144.png">
+      <meta name="theme-color" content="#ffffff">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <title>JSDoop</title>
+   </head>
+   <body>
+      <h1 >Running JSDoop. <span style="color:#50a3a2;">JOB = </span> <span id="solving_job" style="color:#50a3a2;"></span> <span style="text-align:center;color:#50a3a2;">. Current Age = <span style="font-weight: bold;color:black;" id="current_age"></span></span> <img src="NEO-01.png" alt="NEO" style="float:right;width:35px;height:35px;"></h1>
+      <div class="divTable">
+         <div class="divTableBody">
+            <div class="divTableRow">
+               <div class="divTableCell" id = "user_stats">&nbsp;</div>
+               <div class="divTableCell" id = "user_stats_grads_speed">&nbsp;</div>
+               <div class="divTableCell" id = "user_stats_weights_speed">&nbsp;</div>
+            </div>
+         </div>
+      </div>
+      <div class="area" >
+         <img src="loading.gif" alt="LOADING" style="width:200px;height:200px;" id="loading_img">
+         <div id="div_game" style="display:none;">
+            <br>
+            <link href='https://fonts.googleapis.com/css?family=Play:400,700' rel='stylesheet' type='text/css'>
+            <canvas id="game-canvas" width="640" height="640"></canvas>
+         </div>
+         <div class="context">
+            <h1>Thank you <span id="thanks" style="font-weight: bold;color:black;"></span> for collaborating!</h1>
+            <h2>Making the world a better place.</h2>
+            <form class="form" onsubmit='return false;' >
+               <span>Total gradients calculated by the user <span id="calculated_gradients" style="font-weight: bold;color:black;"></span> </span></br>
+               <span>Gradients calculation rate <span id="gradients_calculation_rate" style="font-weight: bold;color:black;"></span></span></br>
+               <span>Times the user has loaded new weights <span id="times_weights_loaded" style="font-weight: bold;color:black;"></span></span></br>
+               <span>Model update rate <span id="model_update_rate" style="font-weight: bold;color:black;"></span></span></br>
+            </form>
+         </div>
+         <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+         </ul>
+      </div >
+   </body>
+
+  <script src="https://cdn.plot.ly/plotly-latest.min.js" charset="utf-8"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/underscore@1.12.0/underscore-min.js"></script>
+   <!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script> -->
+   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.0.0/dist/tf.min.js"></script>
+   <script src="./bundle.js"></script>
+   <script src="./constants/constants.js"></script>
+   <script>
+      const C = JSDConstants;
+      console.debug("C.JOB_HOST_REMOTE  = " +  C.JOB_HOST_REMOTE )
+   </script>
+   <script src="./helper/url_solver.js"></script>
+   <script>
+      const US = JSDURLSolver;
+   </script>
+
+   <script src="./utils.js"></script>
+   <script src="./jsutils/jsutils.js"></script>
+   <script src="./data/create_batches.js"></script>
+   <script src="./algorithms/termination_criteria/termination_criteria.js"></script>
+   <script>
+      const tc = JSDTerminationCriteria;
+   </script>
+   <script src="./api/load_data_http.js"></script>
+   <script src="./api/load_topology.js"></script>
+   <script src="./api/load_current_weights.js"></script>
+   <script src="./api/load_job.js"></script>
+   <script src="./api/load_stats.js"></script>
+   <script src="./api/save_gradients.js"></script>
+   <script src="./loaders/job_loaders.js"></script>
+   <script src="./loaders/topology_loaders.js"></script>
+   <script src="./loaders/weights_loaders.js"></script>
+   <script src="./loaders/gradients_loaders.js"></script>
+   <script src="./loaders/loss_loaders.js"></script>
+   <script src="./loaders/optimizer_loaders.js"></script>
+   <script src="./loaders/dataset_loaders.js"></script>
+   <script src="./loaders/stats_loaders.js"></script>
+   <script src="./algorithms/calculate_gradients.js"></script>
+   <script src="./actors/worker.js"></script>
+  <!-- -->
+  <link rel="stylesheet" href="./css/myrun1.css">
+  <link rel="stylesheet" href="./css/background2.css">
+  <link rel="stylesheet" href="./css/canvas.css">
+  <script lang="js" src="./webjs/space_invaders.js"></script>
+  <link rel="stylesheet" href="./css/plotly_diagrams.css">
+
+  <!--<script lang="js" src="./webjs/borrame.js"></script>
+  <script lang="js" src="./webjs/mystats.js"></script>-->
+
+  <!-- -->
+
+
+
+</html>
+

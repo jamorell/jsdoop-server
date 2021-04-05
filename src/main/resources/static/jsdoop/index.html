@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JSdoop Login</title>
+
+<link rel="stylesheet" href="/css/background1.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+
+<script>
+function mylogin(){
+	var hostname = location.hostname;
+    var port = location.port;
+    var username = $("#username").val();
+    var id_job = $("#id_job").val();
+    
+    var reg = new RegExp(/([a-zA-Z0-9_]){4,10}$/);
+    if (!reg.test(username)) {
+    	alert("username is not valid!")
+        return false;
+    }
+    reg = new RegExp(/([0-9]){1,15}$/);
+    if (!reg.test(id_job)) {
+    	alert("id_job is not valid!")
+        return false;
+    }
+    
+    $(location).attr('href', "init.html?username="+username+"&id_job="+id_job);
+    return true;
+};
+
+function validateUser(){
+	console.log("validating")
+}
+</script>
+
+</head>
+<body>
+
+
+<div class="wrapper">
+	<div class="container">
+<!-- 		<h1>Welcome to JSDoop</h1> -->
+<img src="NEO-01.png" alt="NEO" style="float:right;width:50px;height:50px;">
+		<h1 >Welcome to JSDoop </h1>
+		
+		<form class="form" onsubmit='return false;'>
+<!-- 			<input type="text" id="username" placeholder="Username" pattern="[A-Za-z0-9\_\w]{4,20}" onchange="validateuser()"> -->
+			<input type="text" 
+       pattern="[a-zA-Z0-9_]{4,20}" 
+       id="username"
+        maxlength="20" 
+       placeholder="Username" />
+<label for="username"></label>
+
+			<input type="text" 
+       pattern="[0-9]{1,15}" 
+       id="id_job"
+        maxlength="15" 
+       placeholder="ID Job" />
+<label for="id_job"></label><br/>
+
+<!-- 			<input type="text" id="id_job" placeholder="ID Job">			 -->
+<!-- 			<input type="password" placeholder="Password"> -->
+
+			<button type="submit" onclick="mylogin()" id="login-button">Login</button>
+		</form>
+		
+
+	</div>
+	
+	<ul class="bg-bubbles">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+
+</body>
+</html>
