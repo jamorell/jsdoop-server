@@ -38,6 +38,6 @@ COPY model_conversion.py /opt/files/
 # Package stage
 #
 #FROM openjdk:11-jre-slim
-COPY --from=build /home/app/target/jsdoop-server-0.0.1-SNAPSHOT.jar /usr/local/lib/jsdoop-server-0.0.1-SNAPSHOT.jar
+COPY --from=build /home/app/target/jsdoop-server-0.0.2-SNAPSHOT.jar /usr/local/lib/jsdoop-server-0.0.2-SNAPSHOT.jar
 EXPOSE 8081
-ENTRYPOINT ["java","-jar","/usr/local/lib/jsdoop-server-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","/usr/local/lib/jsdoop-server-0.0.2-SNAPSHOT.jar"]

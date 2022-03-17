@@ -1,15 +1,15 @@
 class JSDConstants {
   static JOB_HOST_LOCAL = "http://localhost"
   static JOB_PORT_LOCAL = 8081
-  static JOB_HOST_REMOTE = "" // TODO -> "http://yourremotehost.com"
-  static JOB_PORT_REMOTE = 0 // TODO -> your remote port number
+  static JOB_HOST_REMOTE = "http://localhost" // TODO -> "http://yourremotehost.com"
+  static JOB_PORT_REMOTE = 8081 // TODO -> your remote port number
   static DEBUG = false
 
   //STATS DATABASE
     static SQL_LOCAL_HOST = "http://localhost"
     static SQL_LOCAL_PORT = 8082
-    static SQL_REMOTE_HOST = "" // TODO -> "http://yourremotehost.com"
-    static SQL_REMOTE_PORT = 0 // TODO -> your remote port number
+    static SQL_REMOTE_HOST = "http://localhost" // TODO -> "http://yourremotehost.com"
+    static SQL_REMOTE_PORT = 8082 // TODO -> your remote port number
 
 
   //DATASETS
